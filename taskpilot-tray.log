@@ -1,0 +1,282 @@
+2026-11-19 17:08:46,339 INFO Starting backend: C:\Users\HP\AppData\Local\Programs\Python\Python315\python.exe -m uvicorn main:app --host 127.0.0.1 --port 8000 --no-access-log
+2026-11-19 17:08:46,343 INFO Backend PID 6984
+2026-11-19 17:44:18,702 INFO Starting backend
+2026-11-19 17:56:20,965 INFO Starting backend
+2026-11-19 17:56:32,973 WARNING Backend not running - restarting.
+2026-11-19 17:56:32,974 INFO Starting backend
+2026-11-19 17:56:42,977 WARNING Backend not running - restarting.
+2026-11-19 17:56:42,978 INFO Starting backend
+2026-11-19 17:56:52,984 WARNING Backend not running - restarting.
+2026-11-19 17:56:52,989 INFO Starting backend
+2026-11-19 17:57:02,993 WARNING Backend not running - restarting.
+2026-11-19 17:57:02,993 INFO Starting backend
+2026-11-19 17:57:13,000 WARNING Backend not running - restarting.
+2026-11-19 17:57:13,005 INFO Starting backend
+2026-11-19 17:57:23,021 WARNING Backend not running - restarting.
+2026-11-19 17:57:23,022 INFO Starting backend
+2026-11-19 17:57:33,027 WARNING Backend not running - restarting.
+2026-11-19 17:57:33,028 INFO Starting backend
+2026-11-19 17:57:43,032 WARNING Backend not running - restarting.
+2026-11-19 17:57:43,032 INFO Starting backend
+2026-11-19 17:57:53,039 WARNING Backend not running - restarting.
+2026-11-19 17:57:53,040 INFO Starting backend
+2026-11-19 17:58:03,043 WARNING Backend not running - restarting.
+2026-11-19 17:58:03,044 INFO Starting backend
+2026-11-19 17:58:13,049 WARNING Backend not running - restarting.
+2026-11-19 17:58:13,049 INFO Starting backend
+2026-11-19 17:58:23,056 WARNING Backend not running - restarting.
+2026-11-19 17:58:23,056 INFO Starting backend
+2026-11-19 17:58:33,060 WARNING Backend not running - restarting.
+2026-11-19 17:58:33,060 INFO Starting backend
+2026-11-19 17:58:43,065 WARNING Backend not running - restarting.
+2026-11-19 17:58:43,066 INFO Starting backend
+2026-11-19 17:58:53,073 WARNING Backend not running - restarting.
+2026-11-19 17:58:53,074 INFO Starting backend
+2026-11-19 17:59:03,078 WARNING Backend not running - restarting.
+2026-11-19 17:59:03,079 INFO Starting backend
+2026-11-19 17:59:13,083 WARNING Backend not running - restarting.
+2026-11-19 17:59:13,084 INFO Starting backend
+2026-11-19 17:59:23,090 WARNING Backend not running - restarting.
+2026-11-19 17:59:23,091 INFO Starting backend
+2026-11-19 17:59:33,094 WARNING Backend not running - restarting.
+2026-11-19 17:59:33,094 INFO Starting backend
+2026-11-19 17:59:43,098 WARNING Backend not running - restarting.
+2026-11-19 17:59:43,098 INFO Starting backend
+2026-11-19 17:59:53,105 WARNING Backend not running - restarting.
+2026-11-19 17:59:53,105 INFO Starting backend
+2026-11-19 18:00:03,109 WARNING Backend not running - restarting.
+2026-11-19 18:00:03,109 INFO Starting backend
+2026-11-19 18:00:13,112 WARNING Backend not running - restarting.
+2026-11-19 18:00:13,112 INFO Starting backend
+2026-11-19 18:00:23,117 WARNING Backend not running - restarting.
+2026-11-19 18:00:23,117 INFO Starting backend
+2026-11-19 18:00:33,121 WARNING Backend not running - restarting.
+2026-11-19 18:00:33,121 INFO Starting backend
+2026-11-19 18:00:43,128 WARNING Backend not running - restarting.
+2026-11-19 18:00:43,128 INFO Starting backend
+2026-11-19 18:00:53,131 WARNING Backend not running - restarting.
+2026-11-19 18:00:53,132 INFO Starting backend
+2026-11-19 18:01:03,155 WARNING Backend not running - restarting.
+2026-11-19 18:01:03,155 INFO Starting backend
+2026-11-19 18:01:13,184 WARNING Backend not running - restarting.
+2026-11-19 18:01:13,184 INFO Starting backend
+2026-11-19 18:01:23,190 WARNING Backend not running - restarting.
+2026-11-19 18:01:23,190 INFO Starting backend
+2026-11-19 18:01:33,198 WARNING Backend not running - restarting.
+2026-11-19 18:01:33,199 INFO Starting backend
+2026-11-19 18:01:43,205 WARNING Backend not running - restarting.
+2026-11-19 18:01:43,205 INFO Starting backend
+2026-11-19 18:01:53,211 WARNING Backend not running - restarting.
+2026-11-19 18:01:53,211 INFO Starting backend
+2026-11-19 18:02:03,218 WARNING Backend not running - restarting.
+2026-11-19 18:02:03,218 INFO Starting backend
+2026-11-19 18:02:13,225 WARNING Backend not running - restarting.
+2026-11-19 18:02:13,225 INFO Starting backend
+2026-11-19 18:02:23,231 WARNING Backend not running - restarting.
+2026-11-19 18:02:23,231 INFO Starting backend
+2026-11-19 18:02:33,236 WARNING Backend not running - restarting.
+2026-11-19 18:02:33,236 INFO Starting backend
+2026-11-19 18:02:43,240 WARNING Backend not running - restarting.
+2026-11-19 18:02:43,240 INFO Starting backend
+2026-11-19 18:02:53,246 WARNING Backend not running - restarting.
+2026-11-19 18:02:53,246 INFO Starting backend
+2026-11-19 18:03:03,252 WARNING Backend not running - restarting.
+2026-11-19 18:03:03,252 INFO Starting backend
+2026-11-19 18:03:13,257 WARNING Backend not running - restarting.
+2026-11-19 18:03:13,257 INFO Starting backend
+2026-11-19 18:03:23,264 WARNING Backend not running - restarting.
+2026-11-19 18:03:23,264 INFO Starting backend
+2026-11-19 18:03:33,270 WARNING Backend not running - restarting.
+2026-11-19 18:03:33,271 INFO Starting backend
+2026-11-19 18:03:43,276 WARNING Backend not running - restarting.
+2026-11-19 18:03:43,276 INFO Starting backend
+2026-11-19 18:03:53,282 WARNING Backend not running - restarting.
+2026-11-19 18:03:53,282 INFO Starting backend
+2026-11-19 18:04:03,287 WARNING Backend not running - restarting.
+2026-11-19 18:04:03,287 INFO Starting backend
+2026-11-19 18:04:13,292 WARNING Backend not running - restarting.
+2026-11-19 18:04:13,292 INFO Starting backend
+2026-11-19 18:04:23,296 WARNING Backend not running - restarting.
+2026-11-19 18:04:23,296 INFO Starting backend
+2026-11-19 18:04:33,302 WARNING Backend not running - restarting.
+2026-11-19 18:04:33,302 INFO Starting backend
+2026-11-19 18:04:43,308 WARNING Backend not running - restarting.
+2026-11-19 18:04:43,308 INFO Starting backend
+2026-11-19 18:04:53,315 WARNING Backend not running - restarting.
+2026-11-19 18:04:53,315 INFO Starting backend
+2026-11-19 18:05:03,320 WARNING Backend not running - restarting.
+2026-11-19 18:05:03,321 INFO Starting backend
+2026-11-19 18:05:13,325 WARNING Backend not running - restarting.
+2026-11-19 18:05:13,325 INFO Starting backend
+2026-11-19 18:05:23,331 WARNING Backend not running - restarting.
+2026-11-19 18:05:23,331 INFO Starting backend
+2026-11-19 18:05:33,336 WARNING Backend not running - restarting.
+2026-11-19 18:05:33,336 INFO Starting backend
+2026-11-19 18:05:43,341 WARNING Backend not running - restarting.
+2026-11-19 18:05:43,341 INFO Starting backend
+2026-11-19 18:05:53,349 WARNING Backend not running - restarting.
+2026-11-19 18:05:53,349 INFO Starting backend
+2026-11-19 18:06:03,358 WARNING Backend not running - restarting.
+2026-11-19 18:06:03,358 INFO Starting backend
+2026-11-19 18:06:13,364 WARNING Backend not running - restarting.
+2026-11-19 18:06:13,364 INFO Starting backend
+2026-11-19 18:06:23,371 WARNING Backend not running - restarting.
+2026-11-19 18:06:23,371 INFO Starting backend
+2026-11-19 18:06:33,379 WARNING Backend not running - restarting.
+2026-11-19 18:06:33,379 INFO Starting backend
+2026-11-19 18:06:43,385 WARNING Backend not running - restarting.
+2026-11-19 18:06:43,386 INFO Starting backend
+2026-11-19 18:06:53,389 WARNING Backend not running - restarting.
+2026-11-19 18:06:53,389 INFO Starting backend
+2026-11-19 18:07:03,396 WARNING Backend not running - restarting.
+2026-11-19 18:07:03,397 INFO Starting backend
+2026-11-19 18:07:13,403 WARNING Backend not running - restarting.
+2026-11-19 18:07:13,404 INFO Starting backend
+2026-11-19 18:07:23,411 WARNING Backend not running - restarting.
+2026-11-19 18:07:23,411 INFO Starting backend
+2026-11-19 18:07:33,414 WARNING Backend not running - restarting.
+2026-11-19 18:07:33,414 INFO Starting backend
+2026-11-19 18:07:43,418 WARNING Backend not running - restarting.
+2026-11-19 18:07:43,418 INFO Starting backend
+2026-11-19 18:07:53,425 WARNING Backend not running - restarting.
+2026-11-19 18:07:53,425 INFO Starting backend
+2026-11-19 18:08:03,432 WARNING Backend not running - restarting.
+2026-11-19 18:08:03,432 INFO Starting backend
+2026-11-19 18:08:13,439 WARNING Backend not running - restarting.
+2026-11-19 18:08:13,439 INFO Starting backend
+2026-11-19 18:08:23,442 WARNING Backend not running - restarting.
+2026-11-19 18:08:23,442 INFO Starting backend
+2026-11-19 18:08:33,450 WARNING Backend not running - restarting.
+2026-11-19 18:08:33,450 INFO Starting backend
+2026-11-19 18:08:43,457 WARNING Backend not running - restarting.
+2026-11-19 18:08:43,457 INFO Starting backend
+2026-11-19 18:08:53,464 WARNING Backend not running - restarting.
+2026-11-19 18:08:53,464 INFO Starting backend
+2026-11-19 18:09:03,471 WARNING Backend not running - restarting.
+2026-11-19 18:09:03,471 INFO Starting backend
+2026-11-19 18:09:13,478 WARNING Backend not running - restarting.
+2026-11-19 18:09:13,478 INFO Starting backend
+2026-11-19 18:09:23,485 WARNING Backend not running - restarting.
+2026-11-19 18:09:23,485 INFO Starting backend
+2026-11-19 18:09:33,492 WARNING Backend not running - restarting.
+2026-11-19 18:09:33,492 INFO Starting backend
+2026-11-19 18:09:43,499 WARNING Backend not running - restarting.
+2026-11-19 18:09:43,499 INFO Starting backend
+2026-11-19 18:09:53,506 WARNING Backend not running - restarting.
+2026-11-19 18:09:53,506 INFO Starting backend
+2026-11-19 18:10:03,513 WARNING Backend not running - restarting.
+2026-11-19 18:10:03,514 INFO Starting backend
+2026-11-19 18:10:13,517 WARNING Backend not running - restarting.
+2026-11-19 18:10:13,518 INFO Starting backend
+2026-11-19 18:10:23,526 WARNING Backend not running - restarting.
+2026-11-19 18:10:23,526 INFO Starting backend
+2026-11-19 18:10:33,532 WARNING Backend not running - restarting.
+2026-11-19 18:10:33,532 INFO Starting backend
+2026-11-19 18:10:43,539 WARNING Backend not running - restarting.
+2026-11-19 18:10:43,539 INFO Starting backend
+2026-11-19 18:10:53,547 WARNING Backend not running - restarting.
+2026-11-19 18:10:53,547 INFO Starting backend
+2026-11-19 18:11:03,554 WARNING Backend not running - restarting.
+2026-11-19 18:11:03,554 INFO Starting backend
+2026-11-19 18:11:13,560 WARNING Backend not running - restarting.
+2026-11-19 18:11:13,561 INFO Starting backend
+2026-11-19 18:11:23,564 WARNING Backend not running - restarting.
+2026-11-19 18:11:23,564 INFO Starting backend
+2026-11-19 18:11:33,570 WARNING Backend not running - restarting.
+2026-11-19 18:11:33,571 INFO Starting backend
+2026-11-19 18:11:43,575 WARNING Backend not running - restarting.
+2026-11-19 18:11:43,575 INFO Starting backend
+2026-11-19 18:11:53,580 WARNING Backend not running - restarting.
+2026-11-19 18:11:53,580 INFO Starting backend
+2026-11-19 18:12:03,583 WARNING Backend not running - restarting.
+2026-11-19 18:12:03,583 INFO Starting backend
+2026-11-19 18:12:13,587 WARNING Backend not running - restarting.
+2026-11-19 18:12:13,587 INFO Starting backend
+2026-11-19 18:12:23,592 WARNING Backend not running - restarting.
+2026-11-19 18:12:23,592 INFO Starting backend
+2026-11-19 18:12:33,596 WARNING Backend not running - restarting.
+2026-11-19 18:12:33,596 INFO Starting backend
+2026-11-19 18:12:43,600 WARNING Backend not running - restarting.
+2026-11-19 18:12:43,600 INFO Starting backend
+2026-11-19 18:12:53,606 WARNING Backend not running - restarting.
+2026-11-19 18:12:53,607 INFO Starting backend
+2026-11-19 18:13:03,610 WARNING Backend not running - restarting.
+2026-11-19 18:13:03,611 INFO Starting backend
+2026-11-19 18:13:13,617 WARNING Backend not running - restarting.
+2026-11-19 18:13:13,617 INFO Starting backend
+2026-11-19 18:13:23,621 WARNING Backend not running - restarting.
+2026-11-19 18:13:23,622 INFO Starting backend
+2026-11-19 18:13:33,625 WARNING Backend not running - restarting.
+2026-11-19 18:13:33,625 INFO Starting backend
+2026-11-19 18:13:43,633 WARNING Backend not running - restarting.
+2026-11-19 18:13:43,633 INFO Starting backend
+2026-11-19 18:13:53,639 WARNING Backend not running - restarting.
+2026-11-19 18:13:53,639 INFO Starting backend
+2026-11-19 18:14:03,643 WARNING Backend not running - restarting.
+2026-11-19 18:14:03,643 INFO Starting backend
+2026-11-19 18:14:13,650 WARNING Backend not running - restarting.
+2026-11-19 18:14:13,650 INFO Starting backend
+2026-11-19 18:14:23,658 WARNING Backend not running - restarting.
+2026-11-19 18:14:23,658 INFO Starting backend
+2026-11-19 18:14:33,665 WARNING Backend not running - restarting.
+2026-11-19 18:14:33,665 INFO Starting backend
+2026-11-19 18:14:43,670 WARNING Backend not running - restarting.
+2026-11-19 18:14:43,671 INFO Starting backend
+2026-11-19 18:14:53,676 WARNING Backend not running - restarting.
+2026-11-19 18:14:53,676 INFO Starting backend
+2026-11-19 18:15:03,681 WARNING Backend not running - restarting.
+2026-11-19 18:15:03,681 INFO Starting backend
+2026-11-19 18:15:13,688 WARNING Backend not running - restarting.
+2026-11-19 18:15:13,688 INFO Starting backend
+2026-11-19 18:15:23,691 WARNING Backend not running - restarting.
+2026-11-19 18:15:23,691 INFO Starting backend
+2026-11-19 18:15:33,695 WARNING Backend not running - restarting.
+2026-11-19 18:15:33,695 INFO Starting backend
+2026-11-19 18:15:43,700 WARNING Backend not running - restarting.
+2026-11-19 18:15:43,700 INFO Starting backend
+2026-11-19 18:15:53,706 WARNING Backend not running - restarting.
+2026-11-19 18:15:53,706 INFO Starting backend
+2026-11-19 18:16:03,711 WARNING Backend not running - restarting.
+2026-11-19 18:16:03,711 INFO Starting backend
+2026-11-19 18:16:13,715 WARNING Backend not running - restarting.
+2026-11-19 18:16:13,716 INFO Starting backend
+2026-11-19 18:16:23,722 WARNING Backend not running - restarting.
+2026-11-19 18:16:23,722 INFO Starting backend
+2026-11-19 18:16:33,728 WARNING Backend not running - restarting.
+2026-11-19 18:16:33,728 INFO Starting backend
+2026-11-19 18:16:43,732 WARNING Backend not running - restarting.
+2026-11-19 18:16:43,732 INFO Starting backend
+2026-11-19 18:16:53,739 WARNING Backend not running - restarting.
+2026-11-19 18:16:53,740 INFO Starting backend
+2026-11-19 18:17:03,744 WARNING Backend not running - restarting.
+2026-11-19 18:17:03,744 INFO Starting backend
+2026-11-19 18:17:13,748 WARNING Backend not running - restarting.
+2026-11-19 18:17:13,748 INFO Starting backend
+2026-11-19 18:17:23,755 WARNING Backend not running - restarting.
+2026-11-19 18:17:23,756 INFO Starting backend
+2026-11-19 18:17:33,761 WARNING Backend not running - restarting.
+2026-11-19 18:17:33,761 INFO Starting backend
+2026-11-19 18:17:43,764 WARNING Backend not running - restarting.
+2026-11-19 18:17:43,764 INFO Starting backend
+2026-11-19 18:17:53,771 WARNING Backend not running - restarting.
+2026-11-19 18:17:53,771 INFO Starting backend
+2026-11-19 18:18:03,778 WARNING Backend not running - restarting.
+2026-11-19 18:18:03,778 INFO Starting backend
+2026-11-19 18:18:13,783 WARNING Backend not running - restarting.
+2026-11-19 18:18:13,783 INFO Starting backend
+2026-11-19 18:18:23,790 WARNING Backend not running - restarting.
+2026-11-19 18:18:23,791 INFO Starting backend
+2026-11-19 18:18:33,798 WARNING Backend not running - restarting.
+2026-11-19 18:18:33,798 INFO Starting backend
+2026-11-19 18:18:43,801 WARNING Backend not running - restarting.
+2026-11-19 18:18:43,801 INFO Starting backend
+2026-11-19 18:18:53,807 WARNING Backend not running - restarting.
+2026-11-19 18:18:53,807 INFO Starting backend
+2026-11-19 18:19:03,811 WARNING Backend not running - restarting.
+2026-11-19 18:19:03,812 INFO Starting backend
+2026-11-19 18:19:13,817 WARNING Backend not running - restarting.
+2026-11-19 18:19:13,817 INFO Starting backend
+2026-11-19 18:19:23,822 WARNING Backend not running - restarting.
+2026-11-19 18:19:23,822 INFO Starting backend
+2026-11-19 18:19:33,826 WARNING Backend not running - restarting.
+2026-11-19 18:19:33,826 INFO Starting backend

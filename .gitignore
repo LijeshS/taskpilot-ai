@@ -1,0 +1,11 @@
+backend/.venv/
+backend/taskpilot.db
+backend/__pycache__/
+frontend/node_modules/
+frontend/dist/
+.env
+*.pyc
+
+backend/.env
+backend/taskpilot_anomaly_model.pkl
+backend/taskpilot.log

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!--
+  Windows Task Scheduler definition for TaskPilot AI.
+  Import with:
+      schtasks /Create /XML "TaskPilotAI-scheduler.xml" /TN "TaskPilot AI"
+  Or double-click the .xml in Task Scheduler > Action > Import Task.
+
+  BEFORE IMPORTING: replace YOURUSERNAME below with your actual Windows
+  username (e.g. Lijesh).  The task runs only under that account.
+-->
+<Task version="1.4" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
+  <RegistrationInfo>
+    <Date>2026-01-01T00:00:00</Date>
+    <Author>INDXO TaskPilot</Author>
+    <Description>Starts TaskPilot AI system-tray monitor silently at Windows logon and keeps it running 24/7.</Description>
+    <URI>\TaskPilot AI</URI>
+  </RegistrationInfo>
+
+  <Triggers>
+    <!-- Start when this user logs in -->
+    <LogonTrigger>
+      <Enabled>true</Enabled>
+      <UserId>YOURUSERNAME</UserId>
+    </LogonTrigger>
+  </Triggers>
+
+  <Principals>
+    <Principal id="Author">
+      <UserId>YOURUSERNAME</UserId>
+      <LogonType>InteractiveToken</LogonType>
+      <RunLevel>LeastPrivilege</RunLevel>
+    </Principal>
+  </Principals>
+
+  <Settings>
+    <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>
+    <DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>
+    <StopIfGoingOnBatteries>false</StopIfGoingOnBatteries>
+    <AllowHardTerminate>false</AllowHardTerminate>
+    <StartWhenAvailable>true</StartWhenAvailable>
+    <RunOnlyIfNetworkAvailable>false</RunOnlyIfNetworkAvailable>
+    <IdleSettings>
+      <StopOnIdleEnd>false</StopOnIdleEnd>
+      <RestartOnIdle>false</RestartOnIdle>
+    </IdleSettings>
+    <AllowStartOnDemand>true</AllowStartOnDemand>
+    <Enabled>true</Enabled>
+    <Hidden>false</Hidden>
+    <RunOnlyIfIdle>false</RunOnlyIfIdle>
+    <WakeToRun>false</WakeToRun>
+    <ExecutionTimeLimit>PT0S</ExecutionTimeLimit>   <!-- run forever -->
+    <Priority>7</Priority>
+    <!-- Restart up to 3 times with 1-min gap if the process dies -->
+    <RestartOnFailure>
+      <Interval>PT1M</Interval>
+      <Count>3</Count>
+    </RestartOnFailure>
+  </Settings>
+
+  <Actions Context="Author">
+    <Exec>
+      <!--
+        Replace C:\TaskPilotAI with the actual folder where you placed
+        the dist\TaskPilotAI folder from PyInstaller.
+      -->
+      <Command>C:\TaskPilotAI\TaskPilotAI.exe</Command>
+      <WorkingDirectory>C:\TaskPilotAI</WorkingDirectory>
+    </Exec>
+  </Actions>
+</Task>
