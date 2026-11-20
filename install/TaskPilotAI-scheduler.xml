@@ -11,7 +11,7 @@
 <Task version="1.4" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
   <RegistrationInfo>
     <Date>2026-01-01T00:00:00</Date>
-    <Author>INDXO TaskPilot</Author>
+    <Author>TaskPilot AI</Author>
     <Description>Starts TaskPilot AI system-tray monitor silently at Windows logon and keeps it running 24/7.</Description>
     <URI>\TaskPilot AI</URI>
   </RegistrationInfo>

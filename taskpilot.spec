@@ -4,6 +4,7 @@
 
 import os
 from pathlib import Path
+from PyInstaller.utils.hooks import collect_submodules
 
 HERE = Path(SPECPATH)   # project root
 
@@ -65,9 +66,15 @@ a = Analysis(
         # DB
         "sqlite3",
         # Misc
-        "python_dotenv",
         "dotenv",
-    ],
+    ]
+    # backend/main.py is bundled as data and imported at runtime, so PyInstaller
+    # cannot see its imports; collect the server stack explicitly.
+    + collect_submodules("uvicorn")
+    + collect_submodules("websockets")
+    + collect_submodules("fastapi")
+    + collect_submodules("starlette")
+    + collect_submodules("pydantic"),
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],

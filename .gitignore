@@ -9,3 +9,8 @@ frontend/dist/
 backend/.env
 backend/taskpilot_anomaly_model.pkl
 backend/taskpilot.log
+
+# Runtime logs and build output
+*.log
+build/
+dist/
