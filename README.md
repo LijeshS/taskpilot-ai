@@ -1,126 +1,164 @@
-# TaskPilot AI — Windows 11 local system dashboard
+# TaskPilot AI
 
-## Included in this starter
-- System overview: CPU, RAM, system drive, network totals, boot time and process count
-- Process inventory: PID, parent PID, user, status, memory and start time
-- Performance endpoints and live dashboard sampling
-- Read-only startup Registry Run entries
-- Current user and interactive sessions
-- Read-only Windows service inventory
-- Installed application inventory
-- Local process-presence history in SQLite
-- FastAPI WebSocket telemetry endpoint
+A local system monitoring and diagnostics dashboard for Windows 11. It watches CPU, memory, disk and processes, learns what's normal for your PC with machine learning, reads Windows error logs and emails you through Gmail when something goes wrong. It runs quietly in the system tray and can start automatically when you sign in.
+
+Everything stays on your computer. The API listens only on `127.0.0.1`, and no cloud AI service is called.
+
+## Features
+
+| Area | What it does |
+|---|---|
+| **Dashboard** | Live CPU, memory and system-drive gauges with your alert thresholds marked, plus network totals, boot time and process count |
+| **Processes** | PID, parent, user, status, memory and start time. You can end a process after confirming; critical Windows processes are protected |
+| **Performance** | Overall and per-core CPU, and memory usage over time |
+| **App History** | Which processes ran and for how long (sampled every 10 seconds) |
+| **Tasks** | One-click system checks (health scan, Windows error scan, service scan, AI analysis) with run history, plus personal to-dos |
+| **Startup Apps, Users, Services, Applications, Storage** | Inventories of what's installed and running. Services can be started, stopped or restarted (needs Administrator; core services are protected) |
+| **AI Assistant** | Trains an Isolation Forest anomaly model on your own telemetry, flags unusual readings, collects Windows Critical/Error events and gives recommendations |
+| **Alerts** | Windows errors, ML anomalies (with acknowledge) and sent notifications |
+| **Settings** | Gmail alerts, adjustable CPU/memory/disk thresholds, a test email and a daily digest |
+| **Theme** | Light, Dark or System (follows Windows), remembered per browser |
+| **System tray** | Open the dashboard, restart the backend or quit, with a watchdog that restarts the backend if it stops |
+
+## Tech stack
+
+- **Frontend:** React 18, Vite 5, Recharts, lucide-react
+- **Backend:** Python 3.11+, FastAPI, Uvicorn, psutil, SQLite
+- **ML:** scikit-learn (Isolation Forest), numpy
+- **Alerts:** Gmail SMTP with an App Password stored in Windows Credential Manager (keyring)
+- **Desktop:** pystray tray app, packaged as an `.exe` with PyInstaller, auto-started by Task Scheduler
+
+## Project layout
+
+```
+backend/            FastAPI app (main.py), requirements, dev runner
+frontend/           React + Vite dashboard
+tray/               System tray launcher (tray_app.py) and icon generator
+install/            One-click .exe build/install script and Task Scheduler template
+deploy.ps1 / .cmd   One-command setup without building an .exe
+run.ps1             Production runner used by deploy.ps1
+taskpilot.spec      PyInstaller build definition
+```
 
 ## Requirements
-Windows 11, Python 3.11+, Node.js LTS.
 
-## Start backend
-Open PowerShell in `backend`:
-```powershell
-Set-ExecutionPolicy -Scope Process Bypass
-.\run.ps1
-```
-API docs: http://127.0.0.1:8000/docs
+Windows 11, Python 3.11+ and Node.js 18+. `deploy.ps1` installs Python and Node.js with winget if they're missing.
 
-## Start frontend
-Open a second terminal:
-```powershell
-cd frontend
-npm install
-npm run dev
-```
-Open http://127.0.0.1:5173
+## Getting started
 
-## Safety
-This starter is intentionally read-only. It does not terminate processes, modify startup entries, or control services. The API binds to loopback (127.0.0.1) only. Do not expose it to your network. Process names, usernames and executable metadata can be sensitive; do not upload collected runtime data to GitHub.
+Choose **one** of the three ways below.
 
-App history currently records process presence every 10 seconds after the backend starts. It is not exact foreground-app usage and is not retroactive. Startup inventory currently reads Registry Run keys only; Startup folders and Task Scheduler entries are future work. GPU metrics, service control, task CRUD, foreground usage and AI insights are future milestones.
-
-
-## Added in the extended starter
-- Personal task CRUD: create, list, update status/fields and delete tasks in SQLite
-- Explainable local resource recommendations based on CPU, memory and disk thresholds
-- Process termination endpoint with confirmation in the UI, critical-process protection and no force-kill fallback
-- Windows service start/stop/restart endpoint with UI confirmation, service-name validation, protected service list and Administrator requirement
-
-### Important controls warning
-Process termination can close applications with unsaved work. Service control can disrupt Windows or installed software. The UI asks for confirmation; the backend also blocks a small set of critical process/service names. This is not a complete Windows safety policy. Use only for services you understand, and keep backups/recovery options. Service controls require launching the backend elevated; do not run elevated for ordinary monitoring or task management. The backend remains bound to localhost.
-
-
-## Local machine-learning and Windows error intelligence
-
-TaskPilot collects a local telemetry sample every 30 seconds (CPU, memory, system-drive disk usage and process count) into `backend/taskpilot.db`.
-
-1. Start the backend and frontend as described above.
-2. Open **AI Assistant** and leave TaskPilot running until at least 30 samples have been collected (about 15 minutes).
-3. Select **Train / update ML model**. The backend trains an unsupervised `IsolationForest` model using your laptop's own telemetry and saves it locally as `backend/taskpilot_anomaly_model.pkl`.
-4. Select **Collect Windows error logs** to import recent Critical, Error and Warning events from the Windows Application and System event logs (last 24 hours).
-5. Refresh the page to review detected unusual telemetry and stored Windows events.
-
-The model learns patterns in resource usage; it is not a supervised fault classifier and cannot prove that a detected anomaly is a hardware/software failure. Windows event records are separate evidence and may include routine warnings. Log collection is read-only and may be limited by Windows event-log permissions. All records and the model remain on this computer. No cloud AI service is called.
-
-New endpoints: `GET /api/ai/model`, `POST /api/ai/train`, `GET /api/ai/anomalies`, `POST /api/logs/collect`, and `GET /api/logs`.
-
-
-## Task Center: executable system checks
-
-The Tasks page now contains real system actions:
-- System health scan: checks CPU, RAM and system-drive pressure.
-- Windows error scan: reads recent Windows Critical/Error events and stores them.
-- Service inventory scan: inspects Windows services (stopped services are not automatically assumed to be faults).
-- AI system analysis: runs the current intelligence analysis.
-Execution history is persisted in the `task_runs` SQLite table. Personal reminders remain separate below the system actions.
-
-## Automated Gmail alerts
-
-TaskPilot can send local automated email notifications for critical resource pressure, newly collected Windows Critical/Error events, and ML anomalies.
-
-1. In Gmail, enable Google 2-Step Verification.
-2. Create a Google App Password from your Google Account security settings. Use the 16-character App Password, not your normal Gmail password.
-3. Start TaskPilot and open **Settings**.
-4. Enter the sending Gmail address, recipient address, and App Password. Save, then select **Send test email**.
-5. Keep the TaskPilot backend running. It checks CPU/RAM/disk every minute, checks Windows Event Logs approximately every five minutes, and the telemetry worker evaluates ML anomalies every 30 seconds after a model is trained.
-
-Notifications are deduplicated and throttled (typically one email per alert type per hour; Windows event fingerprints are throttled for 24 hours). No email is sent for a healthy check. The Alerts page shows Windows errors, anomalies and successfully sent notification records.
-
-Sender and recipient addresses are stored in `backend/.env` (excluded from Git); the App Password is stored through Python keyring in Windows Credential Manager. Do not commit `.env` or share your App Password. For production deployments, consider OAuth-based Gmail API authentication.
-
-New endpoints:
-- `POST /api/tasks/run/{health_check|windows_errors|service_scan|ml_analysis}`
-- `GET /api/tasks/runs`
-- `GET /api/alerts`
-- `GET /api/settings/email`
-- `POST /api/settings/email`
-- `POST /api/settings/email/test`
-
-Important: the backend must be running for scheduled checks and email alerts. This is a local monitoring agent, not a Windows service yet; it will not monitor while the laptop is off or TaskPilot is closed.
-
-
-## One-command deploy (Windows 11)
+### Option 1: Quick setup (recommended to start)
 
 Double-click `deploy.cmd`, or in PowerShell from the project folder:
 
 ```powershell
 Set-ExecutionPolicy -Scope Process Bypass
-.\deploy.ps1                  # install, build, start, open http://127.0.0.1:8000
+.\deploy.ps1                  # install, build, start and open http://127.0.0.1:8000
 .\deploy.ps1 -InstallStartup  # also start automatically when you sign in
 .\deploy.ps1 -RemoveStartup   # remove the sign-in task
 .\deploy.ps1 -Stop            # stop the backend
 ```
 
-It installs Python 3.12 and Node.js LTS with winget if they are missing, creates `backend\.venv`, installs the packages, builds the React dashboard and starts ONE process that serves both the API and the dashboard on `127.0.0.1:8000`. Logs: `backend\taskpilot.log`. Re-running it is safe.
-The sign-in task runs without Administrator rights, so Windows service control stays unavailable until you start the backend from an elevated PowerShell on purpose.
-Development mode (hot reload) still works: `backend\run.ps1` plus `npm run dev` in `frontend` (http://127.0.0.1:5173).
+This creates `backend\.venv`, installs the packages, builds the dashboard and runs one process that serves both the API and the dashboard on port 8000. It's safe to run again. Logs go to `backend\taskpilot.log`.
 
-## Changes in this revision
-- Fixed: the saved `.env` file contained a literal `\n` instead of a line break, so the alert recipient could be lost on restart.
-- Fixed: alert emails showed literal `\n` characters instead of line breaks.
-- Fixed: the service scan never matched stopped services (broken regular expression).
-- Fixed: `vite.config.js` was missing (the React plugin is required), and frontend dependencies were `latest`; they are now pinned.
-- The backend now starts on non-Windows systems (registry and service pages return empty lists), which makes CI testing possible.
-- Design: new instrument-panel look with a live CPU / memory / drive gauge cluster showing the alert thresholds, severity-coloured badges, sentence-case labels, larger text, an offline-capable bundled font, and in-page notifications instead of browser pop-ups.
+### Option 2: System tray app from source
 
-## Light and dark mode
-The header has a **Light / Dark / System** switch. **System** (the default) follows the Windows setting under *Settings → Personalization → Colors → Choose your mode* and changes when Windows changes. A choice of Light or Dark is remembered in that browser (`localStorage` key `taskpilot-theme`). The saved theme is applied before the page draws, so it does not flash the wrong colours on load. All colours are CSS variables in `frontend/src/style.css` (`[data-theme="dark"]` and `[data-theme="light"]` blocks), and the charts read the same variables.
+```powershell
+.\deploy.ps1 -NoBrowser    # first time only: sets up .venv and builds the dashboard
+.\deploy.ps1 -Stop         # let the tray manage the backend instead
+.\backend\.venv\Scripts\pythonw.exe .\tray\tray_app.py
+```
 
-To get the new UI on an existing install, run `.\deploy.ps1` again. It rebuilds the dashboard and restarts the backend.
+### Option 3: Installed .exe with auto-start
+
+```powershell
+Set-ExecutionPolicy -Scope Process Bypass
+.\deploy.ps1 -Stop
+.\install\build_and_install.ps1
+```
+
+This builds `TaskPilotAI.exe` with PyInstaller, installs it to `C:\TaskPilotAI`, registers a Task Scheduler task that starts it at sign-in, and launches it.
+
+> **Warning:** reinstalling deletes `C:\TaskPilotAI`, including `taskpilot.db` (your history, tasks and alerts) and the trained model. Back them up first if you want to keep them.
+
+Use either `deploy.ps1 -InstallStartup` **or** the `.exe` installer for auto-start, not both, or two copies will compete for port 8000.
+
+### Development mode (hot reload)
+
+```powershell
+# terminal 1
+cd backend
+.\run.ps1                 # API on http://127.0.0.1:8000 (docs at /docs)
+
+# terminal 2
+cd frontend
+npm install
+npm run dev               # dashboard on http://127.0.0.1:5173
+```
+
+## How the tray app works
+
+- At start-up it checks `http://127.0.0.1:8000/api/health`. If a TaskPilot backend is already running (for example from `deploy.ps1`), it uses that one instead of starting a second copy.
+- If another program holds port 8000, it shows one notification and doesn't keep retrying.
+- A watchdog checks every 10 seconds and restarts the backend only if it's really unreachable. It allows 60 seconds for a slow start.
+- In the packaged `.exe`, the backend runs on a thread inside the tray process. From source, it runs as a child Python process.
+- Logs: `taskpilot-tray.log` and `backend.log`, next to the `.exe` or in the project folder.
+
+## Machine learning and Windows error logs
+
+TaskPilot records a telemetry sample every 30 seconds (CPU, memory, system-drive usage and process count) in `backend/taskpilot.db`.
+
+1. Leave TaskPilot running until it has at least 30 samples (about 15 minutes).
+2. Open **AI Assistant** and select **Train / update ML model**. The model is saved as `backend/taskpilot_anomaly_model.pkl`.
+3. Select **Collect Windows error logs** to import Critical, Error and Warning events from the last 24 hours.
+4. Review flagged anomalies on **AI Assistant** and **Alerts**, and acknowledge them once checked.
+
+The model learns your normal resource usage. It flags unusual patterns but can't prove that a hardware or software fault caused them.
+
+## Gmail alerts
+
+1. Turn on Google 2-Step Verification, then create an **App Password** (16 characters) in your Google account. Don't use your normal Gmail password.
+2. In TaskPilot, open **Settings**, enter the sending address, the recipient and the App Password, then select **Send test email**.
+3. Optionally adjust the CPU, memory and disk alert thresholds (defaults: 90%, 90% and 95%).
+
+While the backend runs, it checks resources every minute, Windows event logs about every five minutes, and ML anomalies every 30 seconds once a model is trained. Alerts are HTML emails, throttled so the same alert isn't repeated within an hour (24 hours for the same Windows event). A daily digest is sent at about 08:00.
+
+The sender and recipient are stored in `backend/.env`; the App Password is stored in Windows Credential Manager. Both stay out of Git.
+
+## API
+
+Interactive docs are at `http://127.0.0.1:8000/docs` while the backend is running. Main groups:
+
+- **System:** `/api/health`, `/api/system/overview`, `/api/processes`, `/api/performance/cpu`, `/api/performance/memory`, `/api/startup`, `/api/users`, `/api/services`, `/api/applications`, `/api/apps/history`
+- **Controls:** `POST /api/processes/{pid}/terminate`, `POST /api/services/{name}/{start|stop|restart}`
+- **Tasks:** `/api/tasks` (CRUD), `POST /api/tasks/run/{health_check|windows_errors|service_scan|ml_analysis}`, `/api/tasks/runs`
+- **AI and logs:** `/api/ai/model`, `POST /api/ai/train`, `/api/ai/anomalies`, `POST /api/ai/anomalies/{id}/acknowledge`, `/api/ai/recommendations`, `POST /api/logs/collect`, `/api/logs`
+- **Alerts and settings:** `/api/alerts`, `/api/settings/email`, `POST /api/settings/email/test`, `POST /api/settings/email/digest`, `/api/settings/thresholds`
+- **Live:** WebSocket telemetry stream
+
+## Safety and privacy
+
+- The API binds to `127.0.0.1` only. Don't expose it to your network.
+- Ending processes can lose unsaved work, and service control can disrupt Windows. The UI asks for confirmation and the backend blocks a small list of critical processes and services, but that isn't a complete safety policy.
+- Service control needs the backend to run as Administrator. Don't run it elevated for normal monitoring; the sign-in task and tray app run without Administrator rights.
+- Collected data (process names, usernames, event logs) can be sensitive. `.gitignore` keeps `.env`, `taskpilot.db`, the model, logs and build output out of the repo; don't commit them.
+- TaskPilot only monitors while it's running. It doesn't watch the PC while it's off or after you quit the tray app.
+
+## Changelog
+
+### v6: System tray and .exe
+- System tray app with Open Dashboard, Restart Backend and Quit, plus a watchdog
+- PyInstaller build, one-click `install/build_and_install.ps1` and a Task Scheduler auto-start template
+- The tray reuses a running backend and no longer loops when port 8000 is busy
+- The packaged `.exe` runs the backend in-process (the old `-m uvicorn` launch couldn't work from an `.exe`)
+- HTML alert emails, a daily digest, adjustable alert thresholds and anomaly acknowledgement
+- Light/Dark/System theme, a new gauge-cluster dashboard and a bundled font
+- One-command `deploy.ps1`, with the backend serving the built dashboard on one port
+- Fixes: `.env` line breaks, `\n` in emails, the service-scan regex, the missing `vite.config.js`; frontend dependencies pinned; the backend starts on non-Windows systems for CI
+
+### v2: Task Center and Gmail
+- Task Center system checks with run history
+- Gmail alerts for resource pressure, Windows errors and ML anomalies
+- Isolation Forest anomaly detection and Windows event-log collection
+- Personal task CRUD, process termination and service control with protections
